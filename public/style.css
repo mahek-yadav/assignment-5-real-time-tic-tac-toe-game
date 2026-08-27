@@ -1,0 +1,503 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(
+        135deg,
+        #667eea,
+        #764ba2
+    );
+    color: #222;
+    padding: 30px 15px;
+}
+
+
+.container {
+    width: 100%;
+    max-width: 850px;
+    margin: auto;
+}
+
+
+header {
+    text-align: center;
+    color: white;
+    margin-bottom: 25px;
+}
+
+
+header h1 {
+    font-size: 42px;
+    margin-bottom: 8px;
+}
+
+
+.subtitle {
+    font-size: 17px;
+    opacity: 0.9;
+}
+
+
+.connection {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 15px;
+    padding: 8px 14px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.15);
+}
+
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+
+.online {
+    background: #22c55e;
+}
+
+
+.offline {
+    background: #ef4444;
+}
+
+
+.card {
+    background: white;
+    border-radius: 18px;
+    padding: 30px;
+    box-shadow:
+        0 15px 35px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+
+.card h2 {
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+
+.card p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+
+#loginForm {
+    display: flex;
+    gap: 10px;
+    max-width: 500px;
+    margin: auto;
+}
+
+
+#username {
+    flex: 1;
+    padding: 14px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+}
+
+
+#username:focus {
+    border-color: #667eea;
+}
+
+
+#loginForm button {
+    padding: 14px 22px;
+    border: none;
+    border-radius: 10px;
+    background: #667eea;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+#loginForm button:hover {
+    background: #5568d9;
+}
+
+
+.message {
+    margin-top: 15px;
+    color: #ef4444 !important;
+}
+
+
+.game-section {
+    background: white;
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow:
+        0 15px 35px rgba(0,0,0,0.2);
+}
+
+
+.hidden {
+    display: none !important;
+}
+
+
+.game-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+
+.player-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 170px;
+    padding: 12px;
+    border-radius: 12px;
+    background: #f5f5f5;
+}
+
+
+.player-card small {
+    display: block;
+    color: #777;
+}
+
+
+.player-card strong {
+    display: block;
+    margin-top: 3px;
+}
+
+
+.symbol {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+
+.x-symbol {
+    background: #e0e7ff;
+    color: #4f46e5;
+}
+
+
+.o-symbol {
+    background: #fce7f3;
+    color: #db2777;
+}
+
+
+.vs {
+    font-weight: bold;
+    color: #888;
+}
+
+
+.players-count {
+    text-align: center;
+    margin: 15px 0;
+    color: #555;
+}
+
+
+.turn-message {
+    text-align: center;
+    font-weight: bold;
+    font-size: 19px;
+    margin: 20px 0;
+    padding: 12px;
+    border-radius: 10px;
+    background: #f3f4f6;
+}
+
+
+.board {
+    width: min(90vw, 390px);
+    aspect-ratio: 1;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+
+.cell {
+    border: none;
+    border-radius: 12px;
+    background: #f1f5f9;
+    font-size: clamp(45px, 12vw, 75px);
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+
+.cell:hover {
+    background: #e2e8f0;
+    transform: scale(1.02);
+}
+
+
+.cell.x {
+    color: #4f46e5;
+}
+
+
+.cell.o {
+    color: #db2777;
+}
+
+
+.cell.winner {
+    animation: winnerPulse 0.8s infinite alternate;
+}
+
+
+@keyframes winnerPulse {
+
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.06);
+    }
+}
+
+
+.reset-button {
+    display: block;
+    margin: 15px auto 0;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px;
+    background: #ef4444;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+
+.reset-button:hover {
+    background: #dc2626;
+}
+
+
+.history-section {
+    margin-top: 25px;
+    background: white;
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow:
+        0 15px 35px rgba(0,0,0,0.2);
+}
+
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+
+.history-header h2 {
+    font-size: 23px;
+}
+
+
+.refresh-button {
+    border: none;
+    padding: 9px 15px;
+    border-radius: 8px;
+    background: #667eea;
+    color: white;
+    cursor: pointer;
+}
+
+
+.history-container {
+    overflow-x: auto;
+}
+
+
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+
+.history-table th,
+.history-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+
+.history-table th {
+    background: #f8fafc;
+}
+
+
+.winner {
+    font-weight: bold;
+}
+
+
+.loading,
+.no-history {
+    text-align: center;
+    color: #777;
+    padding: 20px;
+}
+
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 1000;
+}
+
+
+.modal-content {
+    width: 100%;
+    max-width: 400px;
+    background: white;
+    padding: 35px;
+    border-radius: 20px;
+    text-align: center;
+    animation: modalPop 0.35s ease;
+}
+
+
+@keyframes modalPop {
+
+    from {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+.winner-icon {
+    font-size: 65px;
+    margin-bottom: 10px;
+}
+
+
+.modal-content h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+
+.modal-content p {
+    color: #555;
+    margin: 8px 0;
+}
+
+
+.auto-reset {
+    font-size: 14px;
+    color: #888 !important;
+}
+
+
+.modal-button {
+    margin-top: 20px;
+    padding: 11px 30px;
+    border: none;
+    border-radius: 10px;
+    background: #667eea;
+    color: white;
+    cursor: pointer;
+}
+
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 20px 10px;
+    }
+
+
+    header h1 {
+        font-size: 32px;
+    }
+
+
+    #loginForm {
+        flex-direction: column;
+    }
+
+
+    .game-info {
+        gap: 8px;
+    }
+
+
+    .player-card {
+        min-width: 0;
+        flex: 1;
+    }
+
+
+    .player-card small {
+        font-size: 11px;
+    }
+
+
+    .player-card strong {
+        font-size: 14px;
+    }
+
+
+    .symbol {
+        width: 38px;
+        height: 38px;
+    }
+
+
+    .vs {
+        font-size: 13px;
+    }
+
+
+    .history-table {
+        font-size: 13px;
+    }
+}
